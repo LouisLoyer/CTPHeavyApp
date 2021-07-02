@@ -1,0 +1,76 @@
+﻿<Window x:Class="CTPUserManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CTPUserManager"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="650" Width="800" Background="#5C88DA">
+
+    <Border Background="#2e3137" CornerRadius="20" Margin="20,20,20,10">
+        <StackPanel>
+
+
+            <Button Click="Button_GetAllUsers" BorderBrush="White" Content="Charger les utilisateurs" Foreground="White" FontSize="25" Margin="97,10" Height="42" Background="#545d6a"></Button>
+
+            <Button Click="Button_AddUser" Content="Ajouter" BorderBrush="White" Foreground="White" Height="30" Width="100" Margin="0,0,12,-20" HorizontalAlignment="Right" Background="#545d6a"></Button>
+            <ListView x:Name="lstUsers" 
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center" Width="720" Height="450" Margin="10,20,10,0" SelectionMode="Single" >
+
+                <ListView.ItemTemplate>
+                    <DataTemplate DataType="AllUsers">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="25"/>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition Width="80"/>
+                            </Grid.ColumnDefinitions>
+
+
+                            <GridViewColumnHeader Grid.Column="0" Tag="ID" >ID</GridViewColumnHeader>
+                            <GridViewColumnHeader Grid.Column="1" Tag="Email" >Email</GridViewColumnHeader>
+                            <GridViewColumnHeader Grid.Column="2" Tag="Password" >Password</GridViewColumnHeader>
+                            <GridViewColumnHeader Grid.Column="3" Tag="FirstName" >FirstName</GridViewColumnHeader>
+                            <GridViewColumnHeader Grid.Column="4" Tag="LastName" >LastName</GridViewColumnHeader>
+                            <GridViewColumnHeader Grid.Column="5" Tag="IsSuspended" >IsSuspended</GridViewColumnHeader>
+                            <GridViewColumnHeader Grid.Column="6" Tag="RoleId" >RoleId</GridViewColumnHeader>
+
+                            <Label Grid.Row="1" Grid.Column="0" Content="{Binding Id}"></Label>
+                            <Label Grid.Row="1" Grid.Column="1" Content="{Binding Email}"></Label>
+                            <Label Grid.Row="1" Grid.Column="2" Content="{Binding Password}"></Label>
+                            <Label Grid.Row="1" Grid.Column="3" Content="{Binding Firstname}"></Label>
+                            <Label Grid.Row="1" Grid.Column="4" Content="{Binding Lastname}"></Label>
+                            <Label Grid.Row="1" Grid.Column="5" Content="{Binding IsSuspended}"></Label>
+                            <Label Grid.Row="1" Grid.Column="6" Content="{Binding RoleId}"></Label>
+
+                            <Button Click="Button_EditUser" Content="Editer" Height="30" Width="75" Grid.Row="1" Grid.Column="7"></Button>
+                            <Button Click="Button_DeleteUser" Content="Suppr" Height="30" Width="75" Grid.Row="1" Grid.Column="8"></Button>
+
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="640"/>
+                    <ColumnDefinition Width="75"/>
+                    <ColumnDefinition Width="75"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </StackPanel>
+    </Border>
+</Window>
